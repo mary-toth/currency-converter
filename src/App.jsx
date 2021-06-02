@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
@@ -26,23 +28,25 @@ export function App() {
       </header>
       <main>
         <span>
-          <input type="number" placeholder="Enter a number in USD"></input>
+          <input
+            type="number"
+            placeholder="Enter a number in USD"
+            onChange={function (event) {
+              setCurrencyAmount(event.target.value)
+            }}
+          ></input>
         </span>
-        <span>
-          <button>Convert</button>
-        </span>
-        <ul>
-          {Object.entries(currencyRates.rates).map(function ([
-            currencyCode,
-            currencyValue,
-          ]) {
-            return (
-              <li key={currencyCode}>
-                {currencyCode}: {(currencyValue * currencyAmount).toFixed(2)}
-              </li>
-            )
-          })}
-        </ul>
+
+        {Object.entries(currencyRates.rates).map(function ([
+          currencyCode,
+          currencyValue,
+        ]) {
+          return (
+            <li key={currencyCode}>
+              {currencyCode}: {(currencyValue * currencyAmount).toFixed(2)}
+            </li>
+          )
+        })}
       </main>
     </div>
   )
