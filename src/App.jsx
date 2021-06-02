@@ -21,8 +21,14 @@ export function App() {
     },
     [currencyRates]
   )
+
   return (
     <div>
+      <style>
+        @import
+        url('https://fonts.googleapis.com/css2?family=Mate&display=swap');
+      </style>
+
       <header>
         <h1>Currency Converter</h1>
       </header>
@@ -30,23 +36,24 @@ export function App() {
         <span>
           <input
             type="number"
-            placeholder="Enter a number in USD"
+            placeholder="Enter an amount in USD"
             onChange={function (event) {
               setCurrencyAmount(event.target.value)
             }}
           ></input>
         </span>
-
-        {Object.entries(currencyRates.rates).map(function ([
-          currencyCode,
-          currencyValue,
-        ]) {
-          return (
-            <li key={currencyCode}>
-              {currencyCode}: {(currencyValue * currencyAmount).toFixed(2)}
-            </li>
-          )
-        })}
+        <ul>
+          {Object.entries(currencyRates.rates).map(function ([
+            currencyCode,
+            currencyValue,
+          ]) {
+            return (
+              <li key={currencyCode}>
+                {currencyCode}: {(currencyValue * currencyAmount).toFixed(2)}
+              </li>
+            )
+          })}
+        </ul>
       </main>
     </div>
   )
