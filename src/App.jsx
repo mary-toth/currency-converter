@@ -9,11 +9,11 @@ export function App() {
 
   useEffect(async function () {
     const response = await axios.get(
-      'http://api.exchangeratesapi.io/v1/latest?access_key=7376d88a94a86cb7c2858fb5394939b7'
+      'http://api.exchangeratesapi.io/v1/latest?access_key=d4daa7a91b3810aa759558a367a610f4'
     )
 
     setCurrencyRates(response.data)
-  })
+  }, [])
 
   useEffect(
     function () {
